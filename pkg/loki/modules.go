@@ -63,9 +63,9 @@ func (m *moduleName) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	return m.Set(val)
 }
 
-func (m moduleName) String() string {
-	return string(m)
-}
+// func (m moduleName) String() string {
+// 	return string(m)
+// }
 
 func (m *moduleName) Set(s string) error {
 	l := moduleName(strings.ToLower(s))
@@ -385,20 +385,20 @@ func orderedDeps(m moduleName) []moduleName {
 	return result
 }
 
-// uniqueDeps returns the unique list of input dependencies, guaranteeing input order stability
-func uniqueDeps(deps []moduleName) []moduleName {
-	result := make([]moduleName, 0, len(deps))
-	uniq := map[moduleName]bool{}
+// // uniqueDeps returns the unique list of input dependencies, guaranteeing input order stability
+// func uniqueDeps(deps []moduleName) []moduleName {
+// 	result := make([]moduleName, 0, len(deps))
+// 	uniq := map[moduleName]bool{}
 
-	for _, dep := range deps {
-		if !uniq[dep] {
-			result = append(result, dep)
-			uniq[dep] = true
-		}
-	}
+// 	for _, dep := range deps {
+// 		if !uniq[dep] {
+// 			result = append(result, dep)
+// 			uniq[dep] = true
+// 		}
+// 	}
 
-	return result
-}
+// 	return result
+// }
 
 type module struct {
 	deps     []moduleName
